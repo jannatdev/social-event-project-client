@@ -16,7 +16,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { cn } from "cn";
-import UserInfo from "@/components/layout/user-info";
+import UserInfo from "@/components/auth/user-info";
 
 const navLinks = [
   { href: "/", label: "Home" },
