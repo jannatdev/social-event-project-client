@@ -78,7 +78,7 @@ console.log("API response:", data);
 
 
   return (
-    <div>
+    <div className="bg-green-50">
        <PagePlaceholder
       title="Upcoming Events"
       description="See every upcoming and past winter cloth distribution drive across Mirpur — with dates, zones, target family counts and sign-up slots for volunteers."
@@ -87,7 +87,7 @@ console.log("API response:", data);
     <div className="grid md:grid-cols-3 gap-5 max-w-7xl mx-auto mb-15">
       {
          upcomingEvents.map(event=> <EventCard  key={event._id} event={event} 
-    currentUserId={currentUserId} />  )
+        currentUserId={currentUserId} />  )
       }
 
     </div>

@@ -39,6 +39,7 @@ export interface IEvent {
   createdByName: string;
   createdAt: string;
   updatedAt: string;
+   email: string;
 }
  interface EventProp{
     event:IEvent,
@@ -52,9 +53,11 @@ const EventCard = ({event,currentUserId}:EventProp) => {
     
 
    const isOwner =event.createdById===currentUserId
-
+    console.log("Event Creator ID:", event.createdById);
+console.log("Current User ID:", currentUserId);
+console.log("Is Owner:", isOwner);
     const formattedDate = new Date(event.eventDate).toLocaleDateString(
-    "bn-BD",
+    "en-US",
     {
       day: "numeric",
       month: "short",
@@ -62,7 +65,7 @@ const EventCard = ({event,currentUserId}:EventProp) => {
     }
 )
     const formattedTime= new Date(event.eventDate).toLocaleTimeString(
-        "bn-BD",
+        "en-US",
     
     {
         
@@ -72,13 +75,14 @@ const EventCard = ({event,currentUserId}:EventProp) => {
       hour12: true,
     
 
-    })
+    }
+    )
   
     return (
           <Card className="group overflow-hidden border border-gray-200 bg-white rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 p-0 gap-0">
 
       {/* Event Thumbnail */}
-      <div className="relative h-52 w-full overflow-hidden bg-gray-100">
+      <div className="relative h-64 w-full overflow-hidden bg-gray-100">
         <Image
           src={event.thumbnailImageUrl}
           alt={event.title}
@@ -91,7 +95,7 @@ const EventCard = ({event,currentUserId}:EventProp) => {
         <div className="absolute inset-0 bg-linear-to-t from-black/40 via-transparent to-transparent" />
 
         {/* Event Type */}
-        <Badge className="absolute top-4 left-4 bg-green-100 hover:bg-green-600 text-green-600 hover:text-white border-0 px-3 py-2.5 rounded-full text-xs font-medium">
+        <Badge className="absolute top-4 left-4 bg-green-600 hover:bg-green-700 text-white border-0 px-3 py-2.5 rounded-full text-xs font-medium">
           {event.eventType}
         </Badge>
       </div>
@@ -173,16 +177,14 @@ const EventCard = ({event,currentUserId}:EventProp) => {
           {/* Delete */}
           <AlertDialog>
             <AlertDialogTrigger >
-           
-
-             <Button
+                <Button
                 variant="outline"
                 size="sm"
                 className="border-red-200 text-red-600 hover:bg-red-50 hover:text-red-700"
-              >
+                >
                 <Trash2 size={15} />
                 Delete
-              </Button>
+                </Button>
             </AlertDialogTrigger>
 
             <AlertDialogContent>
@@ -223,7 +225,7 @@ const EventCard = ({event,currentUserId}:EventProp) => {
             size="sm"
             className="flex-1 bg-green-600 hover:bg-green-700 text-white"
           >
-            <Link href={`/events/${event._id}`} className="flex items-center gap-1.5 py-2">
+            <Link href={`/events/${event._id}`} className="flex items-center gap-1.5 py-6">
               <Eye size={15} />
               View Event
             </Link>

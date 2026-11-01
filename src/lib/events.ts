@@ -107,3 +107,25 @@ export function formatEventDateLabel(value: string): string {
     timeStyle: "short",
   }).format(date);
 }
+
+/** Human-readable event date (bn-BD), matching the event listing cards. */
+export function formatEventDate(value: string): string {
+  const date = parseEventDate(value);
+  if (!date) return "To be announced";
+  return date.toLocaleDateString("bn-BD", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  });
+}
+
+/** Human-readable event time (bn-BD), matching the event listing cards. */
+export function formatEventTime(value: string): string {
+  const date = parseEventDate(value);
+  if (!date) return "To be announced";
+  return date.toLocaleTimeString("bn-BD", {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: true,
+  });
+}

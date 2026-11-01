@@ -127,22 +127,7 @@ export function CreateEventForm() {
     const nextErrors = validateEventForm(values);
     setErrors(nextErrors);
 
-    // Surface validation problems as a toast so they're impossible to miss.
-    // if (Object.values(nextErrors).some(Boolean)) {
-    //   toast.error({
-    //     type: "error",
-    //     title: "Check the form",
-    //     description:
-    //       nextErrors.eventDate ??
-    //       nextErrors.eventType ??
-    //       nextErrors.location ??
-    //       nextErrors.thumbnailImageUrl ??
-    //       nextErrors.description ??
-    //       nextErrors.title ??
-    //       "Please fix the highlighted fields and try again.",
-    //   });
-    //   return;
-    // }
+    
 
     setIsPending(true);
     const result = await createEvent(values);
