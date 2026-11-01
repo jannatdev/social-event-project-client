@@ -38,6 +38,8 @@ const EventJointCard = ({event}:{event:IEvent}) => {
      const [joined,setJoined] = useState(false)
 
      const handleJoinEvent =async()=>{
+
+      toast.success("Joined is Successful")
       if(isPending) return;
       if(!session?.user){
         router.push('/login')

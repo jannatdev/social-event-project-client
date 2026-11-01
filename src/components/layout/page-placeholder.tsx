@@ -18,9 +18,7 @@ export function PagePlaceholder({
       <h1 className="mt-5 font-heading text-3xl text-green-600 font-extrabold tracking-tight sm:text-5xl">
         {title}
       </h1>
-      <p className="mt-4 text-base text-muted-foreground sm:text-lg">
-        {description}
-      </p>
+      
       <Button
         variant="outline"
         nativeButton={false}

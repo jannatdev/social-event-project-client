@@ -1,17 +1,17 @@
-'use client';
 
 
+"use client"
 import { PagePlaceholder } from "@/components/layout/page-placeholder";
 import EventCard, { IEvent } from "@/components/events/event-card";
-import { useSession } from "@/lib/auth-client";
 import { useEffect, useState } from "react";
+
+
 
 
 
 export default  function UpcomingEventsPage() {
 
-  const {data:session} = useSession()
-  const currentUserId= session?.user?.id?? ""
+  
 
   const [ events,setEvents ] = useState<IEvent[]>([])
   const[loading,setLoading] = useState(true)
@@ -27,8 +27,8 @@ export default  function UpcomingEventsPage() {
   }
 
    const data = await res.json()
+         
 
-console.log("API response:", data);
 
       setEvents(Array.isArray(data) ? data : data.events ?? []);
     
@@ -43,7 +43,7 @@ console.log("API response:", data);
     fetchEvents()
   },[])
 
- 
+
 
    const upcomingEvents= events.filter(event=>{
     const eventDate = new Date(event.eventDate)
@@ -55,9 +55,9 @@ console.log("API response:", data);
   )
 
     
-     if (loading) {
-    return <p>Loading events...</p>;
-  }
+  //    if (loading) {
+  //   return <p>Loading events...</p>;
+  // }
 
 
    if (upcomingEvents.length===0){
@@ -87,7 +87,7 @@ console.log("API response:", data);
     <div className="grid md:grid-cols-3 gap-5 max-w-7xl mx-auto mb-15">
       {
          upcomingEvents.map(event=> <EventCard  key={event._id} event={event} 
-        currentUserId={currentUserId} />  )
+         />  )
       }
 
     </div>

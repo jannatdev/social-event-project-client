@@ -13,17 +13,8 @@ import {
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
+import { useSession } from "@/lib/auth-client";
+
 
 
 export interface IEvent {
@@ -41,21 +32,22 @@ export interface IEvent {
   updatedAt: string;
    email: string;
 }
- interface EventProp{
-    event:IEvent,
-    onDelete?:(id:string)=>void,
-    currentUserId: string;
- }
+//  interface EventProp{
+//     event:IEvent,
+//     onDelete?:(id:string)=>void,
+//     currentUserId: string;
+//  }
 
 
-const EventCard = ({event,currentUserId}:EventProp) => {
+const EventCard = ({event}:{event:IEvent}) => {
+
+    const {data:session}=useSession()
    
-    
+    const currentUserId = session?.user?.id
 
    const isOwner =event.createdById===currentUserId
-    console.log("Event Creator ID:", event.createdById);
-console.log("Current User ID:", currentUserId);
-console.log("Is Owner:", isOwner);
+   
+
     const formattedDate = new Date(event.eventDate).toLocaleDateString(
     "en-US",
     {
@@ -83,6 +75,9 @@ console.log("Is Owner:", isOwner);
 
       {/* Event Thumbnail */}
       <div className="relative h-64 w-full overflow-hidden bg-gray-100">
+
+        {
+            event.thumbnailImageUrl ?(
         <Image
           src={event.thumbnailImageUrl}
           alt={event.title}
@@ -90,6 +85,14 @@ console.log("Is Owner:", isOwner);
           unoptimized
           className="object-cover transition-transform duration-500 group-hover:scale-110"
         />
+
+            ):(
+                <div className="flex h-full w-full items-center justify-center text-gray-400">
+      No Image Available
+    </div>
+            )
+        }
+       
 
         {/* Image Overlay */}
         <div className="absolute inset-0 bg-linear-to-t from-black/40 via-transparent to-transparent" />
@@ -175,8 +178,7 @@ console.log("Is Owner:", isOwner);
           </Button>
 
           {/* Delete */}
-          <AlertDialog>
-            <AlertDialogTrigger >
+         
                 <Button
                 variant="outline"
                 size="sm"
@@ -185,34 +187,7 @@ console.log("Is Owner:", isOwner);
                 <Trash2 size={15} />
                 Delete
                 </Button>
-            </AlertDialogTrigger>
-
-            <AlertDialogContent>
-              <AlertDialogHeader>
-                <AlertDialogTitle>
-                  Delete this event?
-                </AlertDialogTitle>
-                <AlertDialogDescription>
-                  Are you sure you want to delete `{event.title}`?
-                  This action cannot be undone.
-                </AlertDialogDescription>
-              </AlertDialogHeader>
-
-              <AlertDialogFooter>
-                <AlertDialogCancel>
-                  Cancel
-                </AlertDialogCancel>
-
-                <AlertDialogAction
-                //   onClick={() => onDelete(event._id)}
-                  className="bg-red-600 hover:bg-red-700"
-                >
-                  Delete Event
-                </AlertDialogAction>
-              </AlertDialogFooter>
-            </AlertDialogContent>
-          </AlertDialog>
-
+        
 
             </>
 

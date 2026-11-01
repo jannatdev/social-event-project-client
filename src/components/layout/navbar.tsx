@@ -22,6 +22,7 @@ const navLinks = [
   { href: "/", label: "Home" },
   { href: "/upcoming-events", label: "Upcoming Events" },
   { href: "/create-event", label: "Create Events" },
+  { href: "/joined-events", label: "Joined Events" },
 ] as const;
 
 function NavLink({
