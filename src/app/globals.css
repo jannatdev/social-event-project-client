@@ -1,26 +1,224 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-nunito), var(--font-geist-sans), ui-sans-serif,
+    sans-serif;
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  --background: oklch(0.995 0.003 145);
+  --foreground: oklch(0.208 0.029 155);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.208 0.029 155);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.208 0.029 155);
+  --primary: oklch(0.627 0.194 149.214);
+  --primary-foreground: oklch(0.985 0.005 145);
+  --secondary: oklch(0.967 0.021 155);
+  --secondary-foreground: oklch(0.345 0.07 152);
+  --muted: oklch(0.968 0.013 150);
+  --muted-foreground: oklch(0.5 0.045 155);
+  --accent: oklch(0.958 0.033 155);
+  --accent-foreground: oklch(0.31 0.075 152);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0.016 152);
+  --input: oklch(0.922 0.016 152);
+  --ring: oklch(0.627 0.194 149.214);
+  --chart-1: oklch(0.627 0.194 149.214);
+  --chart-2: oklch(0.723 0.219 149.579);
+  --chart-3: oklch(0.527 0.154 150.069);
+  --chart-4: oklch(0.448 0.119 151.326);
+  --chart-5: oklch(0.393 0.097 152.535);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0.008 150);
+  --sidebar-foreground: oklch(0.208 0.029 155);
+  --sidebar-primary: oklch(0.627 0.194 149.214);
+  --sidebar-primary-foreground: oklch(0.985 0.005 145);
+  --sidebar-accent: oklch(0.958 0.033 155);
+  --sidebar-accent-foreground: oklch(0.31 0.075 152);
+  --sidebar-border: oklch(0.922 0.016 152);
+  --sidebar-ring: oklch(0.627 0.194 149.214);
+}
+
+.dark {
+  --background: oklch(0.166 0.029 155);
+  --foreground: oklch(0.968 0.013 150);
+  --card: oklch(0.212 0.035 155);
+  --card-foreground: oklch(0.968 0.013 150);
+  --popover: oklch(0.212 0.035 155);
+  --popover-foreground: oklch(0.968 0.013 150);
+  --primary: oklch(0.723 0.219 149.579);
+  --primary-foreground: oklch(0.166 0.029 155);
+  --secondary: oklch(0.265 0.043 153);
+  --secondary-foreground: oklch(0.968 0.013 150);
+  --muted: oklch(0.265 0.043 153);
+  --muted-foreground: oklch(0.708 0.029 155);
+  --accent: oklch(0.265 0.043 153);
+  --accent-foreground: oklch(0.968 0.013 150);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.723 0.219 149.579);
+  --chart-1: oklch(0.723 0.219 149.579);
+  --chart-2: oklch(0.627 0.194 149.214);
+  --chart-3: oklch(0.527 0.154 150.069);
+  --chart-4: oklch(0.448 0.119 151.326);
+  --chart-5: oklch(0.393 0.097 152.535);
+  --sidebar: oklch(0.212 0.035 155);
+  --sidebar-foreground: oklch(0.968 0.013 150);
+  --sidebar-primary: oklch(0.723 0.219 149.579);
+  --sidebar-primary-foreground: oklch(0.166 0.029 155);
+  --sidebar-accent: oklch(0.265 0.043 153);
+  --sidebar-accent-foreground: oklch(0.968 0.013 150);
+  --sidebar-border: oklch(1 0 0 / 12%);
+  --sidebar-ring: oklch(0.723 0.219 149.579);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ---------------------------------------------------------------------------
+ * Hero snow overlay: falling snowflakes only (transparent background), so it
+ * can be layered on top of the photo background.
+ * ------------------------------------------------------------------------- */
+.hero-snow {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220' viewBox='0 0 220 220'%3E%3Cg fill='%23ffffff'%3E%3Ccircle cx='24' cy='40' r='1.6' fill-opacity='.55'/%3E%3Ccircle cx='96' cy='18' r='1.1' fill-opacity='.4'/%3E%3Ccircle cx='164' cy='64' r='2' fill-opacity='.35'/%3E%3Ccircle cx='48' cy='118' r='1.3' fill-opacity='.45'/%3E%3Ccircle cx='132' cy='140' r='1.7' fill-opacity='.3'/%3E%3Ccircle cx='200' cy='112' r='1.2' fill-opacity='.5'/%3E%3Ccircle cx='12' cy='186' r='1.8' fill-opacity='.3'/%3E%3Ccircle cx='84' cy='200' r='1.1' fill-opacity='.4'/%3E%3Ccircle cx='188' cy='196' r='1.5' fill-opacity='.35'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 220px 220px;
+  animation: hero-snow 60s linear infinite;
+}
+
+/* ---------------------------------------------------------------------------
+ * Hero banner background: layered emerald gradients + soft falling snow,
+ * so the banner looks rich without needing a photo asset.
+ * ------------------------------------------------------------------------- */
+.hero-bg {
+  background-color: oklch(0.31 0.09 152);
+  background-image:
+    /* drifting snow flakes */
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220' viewBox='0 0 220 220'%3E%3Cg fill='%23ffffff'%3E%3Ccircle cx='24' cy='40' r='1.6' fill-opacity='.55'/%3E%3Ccircle cx='96' cy='18' r='1.1' fill-opacity='.4'/%3E%3Ccircle cx='164' cy='64' r='2' fill-opacity='.35'/%3E%3Ccircle cx='48' cy='118' r='1.3' fill-opacity='.45'/%3E%3Ccircle cx='132' cy='140' r='1.7' fill-opacity='.3'/%3E%3Ccircle cx='200' cy='112' r='1.2' fill-opacity='.5'/%3E%3Ccircle cx='12' cy='186' r='1.8' fill-opacity='.3'/%3E%3Ccircle cx='84' cy='200' r='1.1' fill-opacity='.4'/%3E%3Ccircle cx='188' cy='196' r='1.5' fill-opacity='.35'/%3E%3C/g%3E%3C/svg%3E"),
+    /* soft light bloom top-center */
+    radial-gradient(
+      60rem 34rem at 50% -8%,
+      oklch(0.78 0.19 150 / 0.35),
+      transparent 70%
+    ),
+    /* warm glow behind the headline */
+    radial-gradient(
+      48rem 30rem at 50% 42%,
+      oklch(0.7 0.18 149 / 0.28),
+      transparent 72%
+    ),
+    /* side vignette for depth */
+    radial-gradient(
+      70rem 40rem at 12% 100%,
+      oklch(0.24 0.07 158 / 0.55),
+      transparent 70%
+    ),
+    linear-gradient(
+      180deg,
+      oklch(0.36 0.1 150) 0%,
+      oklch(0.31 0.088 152) 45%,
+      oklch(0.24 0.068 155) 100%
+    );
+  background-size:
+    220px 220px,
+    auto,
+    auto,
+    auto,
+    auto;
+  animation: hero-snow 60s linear infinite;
+}
+
+@keyframes hero-snow {
+  from {
+    background-position:
+      0 0,
+      0 0,
+      0 0,
+      0 0,
+      0 0;
+  }
+  to {
+    background-position:
+      -220px 440px,
+      0 0,
+      0 0,
+      0 0,
+      0 0;
+  }
+}
+
+@keyframes float-soft {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-float-soft {
+  animation: float-soft 5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-bg,
+  .hero-snow,
+  .animate-float-soft {
+    animation: none;
+  }
 }
