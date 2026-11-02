@@ -86,8 +86,7 @@ export default  function UpcomingEventsPage() {
 
     <div className="grid md:grid-cols-3 gap-5 max-w-7xl mx-auto mb-15">
       {
-         upcomingEvents.map(event=> <EventCard  key={event._id} event={event} 
-         />  )
+         upcomingEvents.map(event=> <EventCard  key={event._id} event={event} />  )
       }
 
     </div>

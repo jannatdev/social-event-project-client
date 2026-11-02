@@ -1,8 +1,9 @@
 'use client'
 
-import EventCard, { IEvent } from "@/components/events/event-card";
+import  EventCard, { IEvent } from "@/components/events/event-card";
 import { useEffect, useState } from "react";
 import { useSession } from "@/lib/auth-client";
+
 
 
 
@@ -13,11 +14,14 @@ export default  function JoinedEventsPage() {
   const [ events,setEvents ] = useState<IEvent[]>([])
   const[loading,setLoading] = useState(true)
 
+  const email = session?.user.email
+
   useEffect(()=>{
+    if (!email) return;
     const getJoinedEvents =async()=>{
-       if (!session?.user?.email) return;
+       
       try{
-        const res = await fetch(`http://localhost:8000/my-joined-events/${session?.user.id}`,{
+        const res = await fetch(`http://localhost:8000/events/joiningEvents/${email}`,{
     cache:"no-store"
         })
     if(!res.ok){
@@ -36,7 +40,7 @@ export default  function JoinedEventsPage() {
   }
 }
   getJoinedEvents();
-});
+},[email]);
 
   if (loading) {
     return <p className="text-center py-10">Loading events...</p>;
@@ -52,10 +56,12 @@ export default  function JoinedEventsPage() {
          <p>You {"haven't"} created any events yet.</p>
 
       ):(
-        <div className="grid md:grid-cols-3 gap-6 mt-6">
+        <div className="grid md:grid-cols-3 gap-6 mb-15">
            {
-        events.map((event:IEvent)=>  <EventCard  key={event._id} event={event} 
-                />)
+        events.map((event:IEvent)=> <EventCard  key={event._id} event={event} />
+          
+         )
+                
       }
 
         </div>

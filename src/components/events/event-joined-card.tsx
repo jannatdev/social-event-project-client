@@ -37,28 +37,44 @@ const EventJointCard = ({event}:{event:IEvent}) => {
      const [joining,setJoining] = useState(false)
      const [joined,setJoined] = useState(false)
 
-     const handleJoinEvent =async()=>{
+     const user =session?.user
 
-      toast.success("Joined is Successful")
-      if(isPending) return;
-      if(!session?.user){
-        router.push('/login')
-      }
+     const handleJoinEvent =async()=>{
+        if (isPending || joining) return;
+
+      
+      if (!user) {
+      router.push("/login");
+      return;
+    }
+
+       const joiningData = {
+      eventId: event._id,
+      title: event.title,
+      description: event.description,
+      eventType: event.eventType,
+      eventDate: event.eventDate,
+      thumbnailImageUrl: event.thumbnailImageUrl,
+      location: event.location,
+
+      createdById: event.createdById,
+      createdByEmail: event.createdByEmail,
+      createdByName: event.createdByName,
+
+      joinedUserEmail: user.email,
+      joinedUserName: user.name,
+    };
     
 
      try{
        setJoining (true);
 
-       const res= await fetch(`http://localhost:8000/events/${event._id}/join`,{
+       const res= await fetch('http://localhost:8000/events/join',{
         method:"POST",
         headers:{
           'Content-type':'application/json'
         },
-        body:JSON.stringify({
-          userId:session?.user?.id,
-          userName:session?.user?.name,
-          userEmail:session?.user?.email,
-        })
+        body:JSON.stringify(joiningData)
        
        })
        const data = await res.json()
@@ -69,6 +85,8 @@ const EventJointCard = ({event}:{event:IEvent}) => {
         throw new Error(data.message)
        }
        setJoined(true);
+       toast.success("Joined successfully!");
+
      }catch(error){
       console.error(error);
       toast.error("Something went wrong")
@@ -229,5 +247,6 @@ const EventJointCard = ({event}:{event:IEvent}) => {
     
   );
 };
+
 
 export default EventJointCard;

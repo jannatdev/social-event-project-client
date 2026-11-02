@@ -208,7 +208,7 @@ const EventCard = ({event}:{event:IEvent}) => {
 
         </div>
       </CardContent>
-    </Card>
+          </Card>
     );
 };
 
