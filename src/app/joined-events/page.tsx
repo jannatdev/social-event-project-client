@@ -3,6 +3,7 @@
 import  EventCard, { IEvent } from "@/components/events/event-card";
 import { useEffect, useState } from "react";
 import { useSession } from "@/lib/auth-client";
+import { PagePlaceholder } from "@/components/layout/page-placeholder";
 
 
 
@@ -48,9 +49,10 @@ export default  function JoinedEventsPage() {
 
   return (
     <div className=" max-w-7xl mx-auto my-15">
-       <h1 className="text-3xl font-bold text-green-600 mb-6">
-        The Joined Events
-      </h1>
+      <PagePlaceholder
+            title="Joined Events"
+            description="Create, edit and track every event you have organised on SheetSathi — with attendance counts, volunteer sign-ups and status controls in one place."
+          />
      {
       events.length===0?(
          <p>You {"haven't"} created any events yet.</p>

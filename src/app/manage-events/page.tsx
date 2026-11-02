@@ -1,6 +1,6 @@
+'use client';
 
-
-import { IEvent } from "@/components/events/event-card";
+import EventCard, { IEvent } from "@/components/events/event-card";
 import { PagePlaceholder } from "@/components/layout/page-placeholder";
 import { useSession } from "@/lib/auth-client";
 import { useEffect, useState } from "react";
@@ -13,6 +13,7 @@ export default function ManageEventsPage() {
 
   const email = session?.user.email
  const [events, setEvents]=useState<IEvent[]>([])
+ const [loading, setLoading]=useState(false)
 
  useEffect(()=>{
   if(!email)return;
@@ -29,6 +30,8 @@ export default function ManageEventsPage() {
      setEvents(data);
     }catch (error){
       console.error(error)
+    }finally{
+      setLoading(false)
     }
   
 }
@@ -36,13 +39,31 @@ export default function ManageEventsPage() {
 
  },[email])
 
-
+  if (loading) {
+    return <p className="text-center py-10">Loading events...</p>;
+  }
 
 
   return (
-    <PagePlaceholder
+    <div className=" max-w-7xl mx-auto ">
+      <PagePlaceholder
       title="Manage Events"
       description="Create, edit and track every event you have organised on SheetSathi — with attendance counts, volunteer sign-ups and status controls in one place."
     />
+
+    {
+      events.length===0 ?(
+      <p>You {"haven't"} created any events yet.</p>):(
+        <div className="grid md:grid-cols-3 gap-6 mb-25 ">
+           {
+            events.map((event:IEvent)=> <EventCard  key={event._id} event={event} />)
+          }
+
+        </div>
+      )
+    }
+
+    </div>
+    
   );
 }
