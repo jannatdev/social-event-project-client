@@ -13,14 +13,10 @@ import {
 import { Field, FieldGroup } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Calendar, ImageIcon, MapPin, Pencil } from "lucide-react"
+
 import { useRouter } from "next/navigation"
 
-import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupInput,
-} from "@/components/ui/input-group";
+
 import {
   Select,
   SelectContent,
@@ -42,26 +38,34 @@ import {
 } from "@/lib/events";
 import { useState } from "react"
 import { Textarea } from "../ui/textarea"
+import { Pencil } from "lucide-react"
+import { IEvent } from "../events/event-card"
 
 
 
- interface UpdateButtonProps {
-  event: {
-    _id: string;
-    title: string;
-    description: string;
-    eventType: string;
-    thumbnailImageUrl: string;
-    location: string;
-    eventDate: string | Date;
-    createdByEmail: string;
-  };
-}
+//  interface UpdateButtonProps {
+//   event: {
+//     _id: string;
+//     title: string;
+//     description: string;
+//     eventType: string;
+//     thumbnailImageUrl: string;
+//     location: string;
+//     eventDate: string | Date;
+//     createdByEmail: string;
+//     onUpdate: (updatedEvent: IEvent) => void;
+//   };
+// }
 
-export function EditButton({event}:UpdateButtonProps) {
+
+
+
+export function EditButton({event,onUpdate}:
+  {event:IEvent, onUpdate:(updatedEvent: IEvent) => void;}) {
     const router = useRouter();
 
     const [isUpdating,setIsUpdating] = useState(false)
+    const [open, setOpen] = useState(false);
 
     const [values, setValues] = useState<EventFormValues>({
       
@@ -78,38 +82,20 @@ export function EditButton({event}:UpdateButtonProps) {
     const user = session?.user;
 
     
-
-
-if (!session?.user) {
-  return <p>Please login</p>;
-
-}
-   
-
-   function updateField(field: keyof EventFormValues, value: string) {
+ function updateField(field: keyof EventFormValues, value: string) {
     setValues((prev) => ({
       ...prev,
       [field]: value,
     }));
   }
-  //  function updateField(field: keyof EventFormValues, value: string) {
-  //      setValues((prev) => ({ ...prev, [field]: value }));}
-     
-    //  const dateInputRef = useRef<HTMLInputElement>(null);
-     
-    //    React.useEffect(() =>
-    //            const input = dateInputRef.current;
-    //      if (input) {
-    //    input.min = toDateTimeLocalValue(new Date());
-    //      }
-    //    }, []); 
+ 
     {new Date(event.eventDate).toLocaleDateString("en-GB", {
   timeZone: "Asia/Dhaka",
 })}
-  async function handleSubmit(formEvent: React.FormEvent<HTMLFormElement>) {
-     formEvent.preventDefault();
-     console.log("UPDATE FORM SUBMITTED!");
+  
     
+    const handleSubmit=async(formEvent:React.FormEvent<HTMLFormElement>)=>{
+      formEvent.preventDefault();
     try{
 
       
@@ -117,7 +103,7 @@ if (!session?.user) {
           ...values,
           eventDate: new Date(values.eventDate),
         };
-        console.log("Update data:", updateData);
+       
 
         
  
@@ -129,12 +115,14 @@ if (!session?.user) {
          },
          body:JSON.stringify(updateData)
      })
-     const data = await res.json()
-       console.log("Server response:", data);
+     const updateEvent = await res.json()
+      
  
      if(!res.ok){
-         throw new Error(data.message || "Failed to update event")
+         throw new Error(updateEvent.message || "Failed to update event")
      }
+     onUpdate(updateEvent);
+      setOpen(false);
      toast.success("Event updated successfully!");
      router.push("/manage-events");
      router.refresh();
@@ -161,15 +149,15 @@ if (!session?.user) {
 
 
   return (
-     <Dialog>
-    {/* Edit button */}
+     <Dialog  open={open} onOpenChange={setOpen}>
+   
     <DialogTrigger
       render={
         <Button
           type="button"
           variant="outline"
           size="sm"
-          className="flex-1 border-green-200 text-green-700 hover:bg-green-50"
+          className="flex-1 border-green-200 text-green-700 hover:bg-green-50 dark:border-green-800 dark:text-green-400 dark:hover:bg-green-950"
         >
           <Pencil size={15} />
           Edit
@@ -187,7 +175,6 @@ if (!session?.user) {
         </DialogDescription>
       </DialogHeader>
 
-      {/* IMPORTANT: Form is now INSIDE DialogContent */}
       <form
         onSubmit={handleSubmit}
         className="flex min-h-0 flex-1 flex-col"
@@ -274,7 +261,7 @@ if (!session?.user) {
             </Field>
 
             {/* Description */}
-            <Field>
+            {/* <Field>
               <Label htmlFor="description">Description</Label>
               <Textarea
                 id="description"
@@ -283,7 +270,7 @@ if (!session?.user) {
                   updateField("description", e.target.value)
                 }
               />
-            </Field>
+            </Field> */}
 
           </FieldGroup>
         </div>

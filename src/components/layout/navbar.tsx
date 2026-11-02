@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import {  Menu, Snowflake } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/layout/theme-toggle";
 import {
   Sheet,
   SheetClose,
@@ -100,7 +101,7 @@ export function Navbar() {
 
         {/* Desktop actions */}
         <div className="hidden items-center gap-2 md:flex">
-
+          <ThemeToggle />
            <UserInfo></UserInfo>
           {/* <Button
             variant="outline"
@@ -121,6 +122,7 @@ export function Navbar() {
 
         {/* Mobile actions */}
         <div className="flex items-center gap-2 md:hidden">
+          <ThemeToggle />
           <Button
             nativeButton={false}
             render={<Link href="/login" />}

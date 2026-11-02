@@ -222,3 +222,12 @@
     animation: none;
   }
 }
+
+/* ---------------------------------------------------------------------------
+ * Dark mode canvas: the `dark:` variant targets descendants of <html>
+ * (`.dark *`), so it can never match <html> itself — this rule keeps the
+ * root background (visible while overscrolling) in sync with the theme.
+ * ------------------------------------------------------------------------- */
+html.dark {
+  background-color: var(--background);
+}

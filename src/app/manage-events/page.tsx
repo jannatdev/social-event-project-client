@@ -14,6 +14,18 @@ export default function ManageEventsPage() {
   const email = session?.user.email
  const [events, setEvents]=useState<IEvent[]>([])
  const [loading, setLoading]=useState(false)
+ const handleDeleteEvent = (id: string) => {
+        setEvents((prevEvents) =>
+            prevEvents.filter((event) => event._id !== id)
+        );
+    };
+    const handleUpdateEvent = (updatedEvent: IEvent) => {
+    setEvents((prevEvents) =>
+        prevEvents.map((event) =>
+            event._id === updatedEvent._id ? updatedEvent : event
+        )
+    );
+};
 
  useEffect(()=>{
   if(!email)return;
@@ -45,10 +57,10 @@ export default function ManageEventsPage() {
 
 
   return (
-    <div className=" max-w-7xl mx-auto ">
+    <div className=" max-w-7xl mx-auto -mt-15 ">
       <PagePlaceholder
       title="Manage Events"
-      description="Create, edit and track every event you have organised on SheetSathi — with attendance counts, volunteer sign-ups and status controls in one place."
+      
     />
 
     {
@@ -56,7 +68,9 @@ export default function ManageEventsPage() {
       <p>You {"haven't"} created any events yet.</p>):(
         <div className="grid md:grid-cols-3 gap-6 mb-25 ">
            {
-            events.map((event:IEvent)=> <EventCard  key={event._id} event={event} />)
+            events.map((event:IEvent)=> <EventCard  key={event._id} event={event}
+             showActions={true}
+             onDelete={handleDeleteEvent} onUpdate={handleUpdateEvent} />)
           }
 
         </div>

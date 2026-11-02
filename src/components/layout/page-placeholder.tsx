@@ -5,17 +5,15 @@ import { Button } from "@/components/ui/button";
 
 export function PagePlaceholder({
   title,
-  description,
+  
 }: {
   title: string;
-  description: string;
+  
 }) {
   return (
-    <div className="mx-auto flex min-h-[70vh] w-full max-w-2xl flex-col items-center justify-center px-4 -my-20 text-center sm:px-6">
-      <span className="inline-flex items-center gap-2 rounded-full border border-border bg-accent px-3 py-1 text-xs font-semibold tracking-wide text-accent-foreground uppercase">
-        Coming soon
-      </span>
-      <h1 className="mt-4 font-heading text-3xl text-green-600 font-extrabold tracking-tight sm:text-5xl">
+    <div className="mx-auto flex min-h-[70vh] w-full max-w-2xl flex-col items-center justify-center px-4 -my-30 text-center sm:px-6">
+      
+      <h1 className=" font-heading text-3xl text-green-600 font-extrabold tracking-tight sm:text-5xl">
         {title}
       </h1>
       

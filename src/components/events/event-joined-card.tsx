@@ -98,7 +98,7 @@ const EventJointCard = ({event}:{event:IEvent}) => {
 
 
   return (
-     <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 border border-gray-200 p-4">
+     <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 border border-gray-200 p-4 dark:border-neutral-800">
 
       {/* Event Information */}
       <div className="lg:col-span-2 space-y-6">
@@ -130,7 +130,7 @@ const EventJointCard = ({event}:{event:IEvent}) => {
           </CardHeader>
 
           <CardContent>
-            <p className="text-gray-600 leading-8">
+            <p className="text-gray-600 leading-8 dark:text-gray-300">
               {event.description}
             </p>
           </CardContent>
@@ -143,7 +143,7 @@ const EventJointCard = ({event}:{event:IEvent}) => {
             <CardContent className="flex gap-3 items-center p-5">
               <CalendarDays className="text-green-600" />
               <div>
-                <p className="text-sm text-gray-500">Event Date</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400">Event Date</p>
                 <p className="font-semibold">
                   {new Date(event.eventDate).toLocaleDateString()}
                 </p>
@@ -155,7 +155,7 @@ const EventJointCard = ({event}:{event:IEvent}) => {
             <CardContent className="flex gap-3 items-center p-5">
               <MapPin className="text-green-600" />
               <div>
-                <p className="text-sm text-gray-500">Location</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400">Location</p>
                 <p className="font-semibold">{event.location}</p>
               </div>
             </CardContent>
@@ -165,7 +165,7 @@ const EventJointCard = ({event}:{event:IEvent}) => {
             <CardContent className="flex gap-3 items-center p-5">
               <Users className="text-green-600" />
               <div>
-                <p className="text-sm text-gray-500">Event Type</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400">Event Type</p>
                 <p className="font-semibold">{event.eventType}</p>
               </div>
             </CardContent>
@@ -175,7 +175,7 @@ const EventJointCard = ({event}:{event:IEvent}) => {
             <CardContent className="flex gap-3 items-center p-5">
               <UserRound className="text-green-600" />
               <div className="min-w-0">
-                <p className="text-sm text-gray-500">Organizer</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400">Organizer</p>
                 <p className="font-semibold truncate">{event.email}</p>
               </div>
             </CardContent>
@@ -191,7 +191,7 @@ const EventJointCard = ({event}:{event:IEvent}) => {
           <div className="h-2 bg-green-600" />
 
           <CardHeader>
-            <Badge className="w-fit bg-green-100 text-green-700">
+            <Badge className="w-fit bg-green-100 text-green-700 dark:bg-green-950 dark:text-green-400">
               Event Registration
             </Badge>
 
@@ -219,9 +219,9 @@ const EventJointCard = ({event}:{event:IEvent}) => {
             <Separator />
 
             {joined ? (
-              <div className="rounded-xl bg-green-50 p-5 text-center">
+              <div className="rounded-xl bg-green-50 p-5 text-center dark:bg-green-950/50">
                 <CheckCircle2 className="mx-auto mb-2 text-green-600" size={35} />
-                <p className="font-bold text-green-700">
+                <p className="font-bold text-green-700 dark:text-green-400">
                   Successfully Joined!
                 </p>
               </div>

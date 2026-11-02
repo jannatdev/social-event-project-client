@@ -13,6 +13,19 @@ export default  function JoinedEventsPage() {
   const {data:session}=useSession()
 
   const [ events,setEvents ] = useState<IEvent[]>([])
+  const handleDeleteEvent = (id: string) => {
+        setEvents((prevEvents) =>
+            prevEvents.filter((event) => event._id !== id)
+        );
+    };
+
+    const handleUpdateEvent = (updatedEvent: IEvent) => {
+    setEvents((prevEvents) =>
+        prevEvents.map((event) =>
+            event._id === updatedEvent._id ? updatedEvent : event
+        )
+    );
+};
   const[loading,setLoading] = useState(true)
 
   const email = session?.user.email
@@ -48,10 +61,10 @@ export default  function JoinedEventsPage() {
   }
 
   return (
-    <div className=" max-w-7xl mx-auto my-15">
+    <div className=" max-w-7xl mx-auto ">
       <PagePlaceholder
             title="Joined Events"
-            description="Create, edit and track every event you have organised on SheetSathi — with attendance counts, volunteer sign-ups and status controls in one place."
+           
           />
      {
       events.length===0?(
@@ -60,7 +73,7 @@ export default  function JoinedEventsPage() {
       ):(
         <div className="grid md:grid-cols-3 gap-6 mb-15">
            {
-        events.map((event:IEvent)=> <EventCard  key={event._id} event={event} />
+        events.map((event:IEvent)=> <EventCard  key={event._id} event={event} onDelete={handleDeleteEvent} onUpdate={handleUpdateEvent}/>
           
          )
                 

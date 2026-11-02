@@ -55,9 +55,9 @@ export default  function UpcomingEventsPage() {
   )
 
     
-  //    if (loading) {
-  //   return <p>Loading events...</p>;
-  // }
+ if (loading) {
+    return <p className="text-center py-10">Loading events...</p>;
+  }
 
 
    if (upcomingEvents.length===0){
@@ -67,7 +67,7 @@ export default  function UpcomingEventsPage() {
         <h2 className="text-xl font-semibold text-green-600">
           No Events Found
         </h2>
-        <p className="text-gray-500 mt-2">
+        <p className="text-gray-500 mt-2 dark:text-gray-400">
           Create your first event to get started.
         </p>
       </div>
@@ -78,15 +78,15 @@ export default  function UpcomingEventsPage() {
 
 
   return (
-    <div className="bg-green-50">
+    <div className="bg-green-50 dark:bg-background -mt-20">
        <PagePlaceholder
       title="Upcoming Events"
-      description="See every upcoming and past winter cloth distribution drive across Mirpur — with dates, zones, target family counts and sign-up slots for volunteers."
+      
     />
 
     <div className="grid md:grid-cols-3 gap-5 max-w-7xl mx-auto mb-15">
       {
-         upcomingEvents.map(event=> <EventCard  key={event._id} event={event} />  )
+         upcomingEvents.map(event=> <EventCard  key={event._id} event={event}  onDelete={() => {}} onUpdate={() => {}} />  )
       }
 
     </div>

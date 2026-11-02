@@ -28,12 +28,12 @@ const EventDetailsPage = async({params}:Params) => {
    const event = await res.json()
 
   return (
-     <main className="min-h-screen bg-green-50 px-4 py-8 my-10">
+     <main className="min-h-screen bg-green-50 px-4 py-8 my-10 dark:bg-background">
       <div className="max-w-6xl mx-auto">
 
         <Link
           href="/upcoming-events"
-          className="mb-6 inline-flex items-center gap-2 text-gray-600 hover:text-green-600"
+          className="mb-6 inline-flex items-center gap-2 text-gray-600 hover:text-green-600 dark:text-gray-300"
         >
           <ArrowLeft size={18} />
           Back to Events
