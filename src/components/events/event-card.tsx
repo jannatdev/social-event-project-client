@@ -14,6 +14,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { useSession } from "@/lib/auth-client";
+import { EditButton } from "../button/update-button";
 
 
 
@@ -165,18 +166,8 @@ const EventCard = ({event}:{event:IEvent}) => {
              { isOwner && ( <>
 
           {/* Edit */}
-          <Button
-         
-            variant="outline"
-            size="sm"
-            className="flex-1 border-green-200 text-green-700 hover:bg-green-50 hover:text-green-700"
-          >
-            <Link href={`/manage-events/${event._id}/edit`} className="flex items-center gap-1.5">
-              <Pencil size={15} />
-              Edit
-            </Link>
-          </Button>
-
+        
+           <EditButton event={event}/>
           {/* Delete */}
          
                 <Button
