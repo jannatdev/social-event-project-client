@@ -14,7 +14,7 @@ const JoinedEventClient = ({iniitialEvents}:IJoindClient) => {
 
  
     
-      const [ events,setEvents ] = useState<IEvent[]>([])
+      const [ events,setEvents ] = useState<IEvent[]>(iniitialEvents)
       const handleDeleteEvent = (id: string) => {
             setEvents((prevEvents) =>
                 prevEvents.filter((event) => event._id !== id)

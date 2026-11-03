@@ -2,7 +2,7 @@
 
 import EventCard, { IEvent } from "@/components/events/event-card";
 import { PagePlaceholder } from "@/components/layout/page-placeholder";
-import { useSession } from "@/lib/auth-client";
+import { authClient, useSession } from "@/lib/auth-client";
 import { useEffect, useState } from "react";
 
 
@@ -32,14 +32,28 @@ export default function ManageEventsPage() {
 
   const getManageEvents=async()=>{
     try{
+      const { data, error } = await authClient.token();
 
-   const res = await fetch(`http://localhost:8000/events/creator/${email}`)
+    if (error || !data?.token) {
+      throw new Error("Failed to generate JWT token");
+    }
+
+    const token = data.token;
+
+   const res = await fetch(`http://localhost:8000/events/creator/${email}`,{
+    method:"GET",
+     headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        cache: "no-store",
+      })
+  
 
      if (!res.ok){
       throw new Error("Failed to fetch events")
      }
-     const data = await res.json()
-     setEvents(data);
+     const event = await res.json()
+     setEvents(event);
     }catch (error){
       console.error(error)
     }finally{

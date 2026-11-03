@@ -5,7 +5,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { useSession } from "@/lib/auth-client";
+import { authClient, useSession } from "@/lib/auth-client";
 
 import {
   CalendarDays,
@@ -47,6 +47,15 @@ const EventJointCard = ({event}:{event:IEvent}) => {
       router.push("/login");
       return;
     }
+     
+    const { data, error } = await authClient.token();
+
+    if (error || !data?.token) {
+      throw new Error("Failed to generate JWT token");
+    }
+
+    const token = data.token;
+
 
        const joiningData = {
       eventId: event._id,
@@ -72,7 +81,8 @@ const EventJointCard = ({event}:{event:IEvent}) => {
        const res= await fetch('http://localhost:8000/events/join',{
         method:"POST",
         headers:{
-          'Content-type':'application/json'
+          'Content-type':'application/json',
+          Authorization: `Bearer ${token}`,
         },
         body:JSON.stringify(joiningData)
        
