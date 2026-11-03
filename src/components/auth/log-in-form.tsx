@@ -215,6 +215,7 @@ const LogInForm = () => {
              setFormError(message);
              toast.error( "Google sign-in failed !" );
            }
+           toast.success("Google Sign-in is success!")
          }
 
     return (

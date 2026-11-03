@@ -8,7 +8,9 @@ const UpcomingEvents = () => {
      useEffect(()=>{
         const upcomingEvents=async()=>{
             try{
-                const res = await fetch ('http://localhost:8000/Upcoming-events')
+                const res = await fetch ('http://localhost:8000/Upcoming-events',{
+                    cache:"no-store",
+                })
 
                 if(!res.ok){
                     throw new Error("Failed to fetch upcoming events")

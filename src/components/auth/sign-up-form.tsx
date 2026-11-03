@@ -230,6 +230,7 @@ export function SignUpForm() {
       toast.error("Google sign-in failed!")
        
     }
+    toast.success("Google Sign-in is success!")
   }
 
   return (
