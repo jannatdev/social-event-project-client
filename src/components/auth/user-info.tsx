@@ -66,7 +66,7 @@ const UserInfo = () => {
     .join("");
 
     }
-0
+
  
 
     const handleLogOut = async () => {
