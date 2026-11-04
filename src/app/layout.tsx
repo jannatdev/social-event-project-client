@@ -7,6 +7,7 @@ import { ThemeProvider } from "next-themes";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { Toaster } from "@/components/ui/sonner";
 import { Navbar } from "@/components/layout/navbar";
+import { Suspense } from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -42,7 +43,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="flex min-h-full flex-col bg-green-50 dark:bg-background">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <Navbar />
+          <Suspense fallback={<div className="h-16" />}>
+           <Navbar />
+           </Suspense>
           <main className="flex-1">{children}</main>
           <SiteFooter />
           <Toaster position="top-right" richColors />

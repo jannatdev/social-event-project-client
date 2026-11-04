@@ -1,17 +1,30 @@
 import EventJointCard from "@/components/events/event-joined-card";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
+import { Suspense } from "react";
 
 interface Params{
   params:{
     id:string
   }
 }
-
-const EventDetailsPage = async({params}:Params) => {
+const EventDetailsPage = ({ params }: Params) => {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen flex items-center justify-center">
+          <p>Loading event details...</p>
+        </div>
+      }
+    >
+      <EventDetailsContent params={params} />
+    </Suspense>
+  );
+};
+const EventDetailsContent = async({params}:Params) => {
   const {id} =await params
 
-  const res = await fetch (`https://social-event-project-server-qptb.vercel.app/${id}`,{
+  const res = await fetch (`https://social-event-project-server-qptb.vercel.app/events/${id}`,{
     cache:"no-store"
   })
 

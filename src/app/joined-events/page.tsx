@@ -1,31 +1,31 @@
 import { auth } from "@/lib/auth";
-import { redirect } from "next/navigation";
+
 import { headers } from "next/headers";
 import JoinedEventClient from "../JoinedEventClient/page";
+import { Suspense } from "react";
+
+
+
+export default function JoinedEventsPage() {
+  return (
+    <Suspense fallback={<p className="text-center py-10">Loading joined events...</p>}>
+      <JoinedEventsData />
+    </Suspense>
+  );
+}
 
 
 
 
+ async function JoinedEventsData() {
+  
 
-export default async function JoinedEventsPage() {
-
-  // Get user session
   const requestHeaders = await headers();
 
-  const session = await auth.api.getSession({
-    headers: requestHeaders,
-  });
+const jwtToken = await auth.api.getToken({
+  headers: requestHeaders,
+});
 
-  if (!session?.user) {
-    redirect("/login");
-  }
-
-  const email = session.user.email;
-
-  // Generate JWT token
-   const jwtToken = await auth.api.getToken({
-    headers: requestHeaders,
-  });
 
   const token = jwtToken?.token;
   
@@ -33,7 +33,17 @@ export default async function JoinedEventsPage() {
     throw new Error("Failed to generate JWT token");
   }
 
-    
+  
+   const session = await auth.api.getSession({
+    headers:requestHeaders,
+   });
+
+const email = session?.user?.email;
+
+if (!email) {
+  throw new Error("User is not logged in");
+}
+
 
 
  
@@ -49,10 +59,8 @@ export default async function JoinedEventsPage() {
 
   if (!res.ok) {
 
-   
-
+    
   
-
     throw new Error("Failed to fetch events");
   }
 
@@ -60,7 +68,7 @@ export default async function JoinedEventsPage() {
 
 
   return (
-    <JoinedEventClient iniitialEvents={events} />
+    <JoinedEventClient iniitialEvents={Array.isArray(events) ? events : []} />
   );
 }
 
