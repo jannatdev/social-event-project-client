@@ -54,9 +54,7 @@ if (!email) {
        Authorization: `Bearer ${token}`,
       },
 
-      
-
-      cache: "no-store",
+    cache: "no-store",
     }
   );
 
