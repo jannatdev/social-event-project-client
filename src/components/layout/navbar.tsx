@@ -18,10 +18,17 @@ import {
 } from "@/components/ui/sheet";
 import { cn } from "cn";
 import UserInfo from "@/components/auth/user-info";
+import { authClient } from "@/lib/auth-client";
 
-const navLinks = [
+const publicLinks = [
   { href: "/", label: "Home" },
   { href: "/upcoming-events", label: "Upcoming Events" },
+  
+] as const;
+
+
+const privateLinks = [
+  
   { href: "/create-event", label: "Create Events" },
   { href: "/joined-events", label: "Joined Events" },
   { href: "/manage-events", label: "Manage Events" },
@@ -68,11 +75,24 @@ export function Navbar() {
   const pathname = usePathname();
   const [prevPathname, setPrevPathname] = React.useState(pathname);
 
-  // Close the mobile sheet whenever the route changes. Adjusting state during
-  // render (instead of in an effect) avoids a cascading render pass.
+   const { data: session, isPending } = authClient.useSession();
+
+  const isLoggedIn = !!session?.user;
+
+  // Show private links only when logged in
+  const navLinks = isLoggedIn
+    ? [...publicLinks, ...privateLinks]
+    : [...publicLinks];
+
+
+
   if (pathname !== prevPathname) {
     setPrevPathname(pathname);
     setOpen(false);
+  }
+
+   if (isPending) {
+    return <p className="text-center py-10">Loading ...</p>;
   }
 
   return (
@@ -103,21 +123,7 @@ export function Navbar() {
         <div className="hidden items-center gap-2 md:flex">
           <ThemeToggle />
            <UserInfo></UserInfo>
-          {/* <Button
-            variant="outline"
-            nativeButton={false}
-            render={<Link href="/signup" />}
-            className="px-5 font-semibold"
-          >
-            Sign Up
-          </Button> */}
-          {/* <Button
-            nativeButton={false}
-            render={<Link href="/login" />}
-            className="px-5 font-semibold shadow-sm shadow-primary/30"
-          >
-            Login
-          </Button> */}
+         
         </div>
 
         {/* Mobile actions */}

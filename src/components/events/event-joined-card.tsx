@@ -99,7 +99,7 @@ const EventJointCard = ({event}:{event:IEvent}) => {
 
      }catch(error){
       console.error(error);
-      toast.error("Something went wrong")
+      toast.error("InValid Join")
      }finally{
       setJoining(false)
      }

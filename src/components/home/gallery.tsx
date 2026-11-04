@@ -9,9 +9,10 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { Snowflake } from "lucide-react";
 
 const galleryImages = [
-  "/images/gallary/412152241_701964645448667_5884513189217290191_n.jpg",
+
   "/images/gallary/image.png",
   "/images/gallary/images (1).jpg",
   "/images/gallary/images (2).jpg",
@@ -27,14 +28,13 @@ const galleryImages = [
 
 const Gallery = () => {
   return (
-    <section id="gallery" className="py-16 bg-white py-5 dark:bg-card">
-      <div className="container mx-auto px-4">
-        <h2 className="mb-2 text-center text-3xl font-bold">Gallery</h2>
-        <p className="mx-auto mb-8 max-w-2xl text-center text-gray-600 dark:text-gray-300">
-          Moments from our winter cloth distribution drives — warm clothes,
-          warmer hearts.
-        </p>
-
+    <section id="gallery" className=" container mx-auto py-16  dark:bg-card">
+      <div className=" space-y-4 px-4 mb-5 text-left">
+        <span className="inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary">
+            <Snowflake className="size-4" aria-hidden />Gallery </span>
+        <h2 className="mb-2  text-3xl text-left font-bold">All our activities</h2>
+        </div>
+        <div>
         <Carousel
           aria-label="Photo gallery from our winter cloth distribution drives"
           opts={{ align: "start", loop: true }}

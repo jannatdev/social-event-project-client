@@ -110,7 +110,7 @@ const UserInfo = () => {
               {getInitials(user.name)}
             </AvatarFallback>
           </Avatar>
-          <span className="max-w-36 truncate text-sm font-medium">
+          <span className="max-w-36 truncate text-sm text-green-600 font-medium">
             {user.name}
           </span>
           <ChevronDown

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import EventCard, { IEvent } from '../events/event-card';
+import { Snowflake } from 'lucide-react';
 
 const UpcomingEvents = () => {
      const [events, setEvents] = useState<IEvent[]>([]);
@@ -33,11 +34,20 @@ const UpcomingEvents = () => {
         return <p className="text-center">Loading upcoming events...</p>;
     }
     return (
-          <section className="py-16">
-            <div className="container mx-auto px-4">
-                <h2 className="text-3xl font-bold text-center mb-8">
+          <section className="container mx-auto py-16">
+            <div className='space-y-3 text-left mb-4 mx-4'>
+                 <span className="inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary">
+                     <Snowflake className="size-4" aria-hidden />
+                     our Events
+                 </span>
+                <h2 className="text-3xl text-left font-bold mb-8">
                     Recent Upcoming Events
                 </h2>
+
+            </div>
+           
+            <div className=" px-4">
+               
 
                 {events.length === 0 ? (
                     <p className="text-center">

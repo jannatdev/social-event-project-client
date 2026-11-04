@@ -120,7 +120,7 @@ const EventCard = ({event,onDelete,onUpdate, showActions = false}:EventCardProps
         </p>
 
         {/* Event Details */}
-        <div className="space-y-3 mt-5 grid grid-cols-3">
+        <div className="space-y-3 mt-5 grid gap-2">
 
           <div className="flex items-center gap-1 text-sm text-gray-600 dark:text-gray-300">
             <div className="flex items-center justify-center size-9 rounded-lg bg-green-100 text-green-600 shrink-0 dark:bg-green-950 dark:text-green-400">
