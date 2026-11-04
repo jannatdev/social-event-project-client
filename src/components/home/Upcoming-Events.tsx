@@ -9,7 +9,7 @@ const UpcomingEvents = () => {
      useEffect(()=>{
         const upcomingEvents=async()=>{
             try{
-                const res = await fetch ('http://localhost:8000/Upcoming-events',{
+                const res = await fetch ('https://social-event-project-server.vercel.app/Upcoming-events',{
                     cache:"no-store",
                 })
 

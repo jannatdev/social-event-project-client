@@ -78,7 +78,7 @@ const EventJointCard = ({event}:{event:IEvent}) => {
      try{
        setJoining (true);
 
-       const res= await fetch('http://localhost:8000/events/join',{
+       const res= await fetch('https://social-event-project-server-qptb.vercel.app/events/join',{
         method:"POST",
         headers:{
           'Content-type':'application/json',

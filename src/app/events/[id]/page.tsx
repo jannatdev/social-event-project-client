@@ -11,7 +11,7 @@ interface Params{
 const EventDetailsPage = async({params}:Params) => {
   const {id} =await params
 
-  const res = await fetch (`http://localhost:8000/events/${id}`,{
+  const res = await fetch (`https://social-event-project-server-qptb.vercel.app/${id}`,{
     cache:"no-store"
   })
 

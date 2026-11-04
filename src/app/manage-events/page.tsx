@@ -40,7 +40,7 @@ export default function ManageEventsPage() {
 
     const token = data.token;
 
-   const res = await fetch(`http://localhost:8000/events/creator/${email}`,{
+   const res = await fetch(`https://social-event-project-server.vercel.app//events/creator/${email}`,{
     method:"GET",
      headers: {
           Authorization: `Bearer ${token}`,

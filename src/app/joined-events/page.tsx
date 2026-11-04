@@ -28,7 +28,7 @@ export default async function JoinedEventsPage() {
   });
 
   const token = jwtToken?.token;
-
+  
   if (!token) {
     throw new Error("Failed to generate JWT token");
   }
@@ -38,7 +38,7 @@ export default async function JoinedEventsPage() {
 
  
   const res = await fetch(
-    `http://localhost:8000/events/joiningEvents/${email}`, {
+    `https://social-event-project-server-qptb.vercel.app/events/joiningEvents/${encodeURIComponent(email)}`, {
       method:"GET",
       headers: {
        Authorization: `Bearer ${token}`,
@@ -48,6 +48,11 @@ export default async function JoinedEventsPage() {
   );
 
   if (!res.ok) {
+
+   
+
+  
+
     throw new Error("Failed to fetch events");
   }
 

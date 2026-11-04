@@ -215,23 +215,23 @@ export function SignUpForm() {
     router.refresh();
   }
 
-  async function handleGoogleSignIn() {
-    setFormError(null);
-    setIsGooglePending(true);
-    const { error } = await signIn.social({
-      provider: "google",
-      callbackURL: "/",
-    });
-    if (error) {
-      setIsGooglePending(false);
-      const message =
-        error.message ?? "Could not continue with Google. Please try again.";
-      setFormError(message);
-      toast.error("Google sign-in failed!")
+  // async function handleGoogleSignIn() {
+  //   setFormError(null);
+  //   setIsGooglePending(true);
+  //   const { error } = await signIn.social({
+  //     provider: "google",
+  //     callbackURL: "/",
+  //   });
+  //   if (error) {
+  //     setIsGooglePending(false);
+  //     const message =
+  //       error.message ?? "Could not continue with Google. Please try again.";
+  //     setFormError(message);
+  //     toast.error("Google sign-in failed!")
        
-    }
-    toast.success("Google Sign-in is success!")
-  }
+  //   }
+  //   toast.success("Google Sign-in is success!")
+  // }
 
   return (
     <Card
@@ -412,14 +412,14 @@ export function SignUpForm() {
             )}
           </Button>
 
-          <div className="relative flex h-5 items-center">
+          {/* <div className="relative flex h-5 items-center">
             <Separator className="absolute inset-x-0 top-1/2" />
             <span className="relative mx-auto block w-fit bg-card px-2 text-xs text-muted-foreground">
               or continue with
             </span>
-          </div>
+          </div> */}
 
-          <Button
+          {/* <Button
             type="button"
             variant="outline"
             disabled={isGooglePending}
@@ -432,7 +432,7 @@ export function SignUpForm() {
               <GoogleIcon className="size-5" />
             )}
             Continue with Google
-          </Button>
+          </Button> */}
         </form>
 
         <p className="mt-6 text-center text-sm text-muted-foreground">
