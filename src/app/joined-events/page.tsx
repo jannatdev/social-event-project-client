@@ -1,7 +1,7 @@
 import { auth } from "@/lib/auth";
 
 import { headers } from "next/headers";
-import JoinedEventClient from "../JoinedEventClient/page";
+import JoinedEventClient from "@/components/events/JoinedEventClient";
 import { Suspense } from "react";
 
 
