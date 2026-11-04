@@ -32,7 +32,7 @@ const jwtToken = await auth.api.getToken({
   if (!token) {
     throw new Error("Failed to generate JWT token");
   }
-
+   
   
    const session = await auth.api.getSession({
     headers:requestHeaders,
@@ -60,6 +60,9 @@ if (!email) {
 
   if (!res.ok) {
 
+const errorData = await res.text();
+  console.log("API Error:", errorData);
+
     
   
     throw new Error("Failed to fetch events");
@@ -67,10 +70,13 @@ if (!email) {
        
      
   const events = await res.json();
+  
+
 
 
   return (
-    <JoinedEventClient iniitialEvents={Array.isArray(events) ? events : []} />
+    <JoinedEventClient  iniitialEvents={Array.isArray(events) ? events : []}
+/>
   );
 }
 

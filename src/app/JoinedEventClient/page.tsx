@@ -4,36 +4,48 @@ import EventCard, { IEvent } from '@/components/events/event-card';
 import { PagePlaceholder } from '@/components/layout/page-placeholder';
 import { useSession } from '@/lib/auth-client';
 import { redirect } from 'next/navigation';
+import { useRouter } from 'next/router';
 
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 interface IJoindClient{
     
-  iniitialEvents?: IEvent[]
+  iniitialEvents?: IEvent[];
 }
 
 
 const JoinedEventClient = ({iniitialEvents =[]}:IJoindClient) => {
-   const{data:session}=useSession()
+   const{data:session, isPending}=useSession()
+   const router = useRouter();
  
       if (!session?.user) {
     redirect("/login");
   }
       const [ events,setEvents ] = useState<IEvent[]>(iniitialEvents)
+       useEffect(() => {
+    if (!isPending && !session?.user) {
+      router.replace("/login");
+    }
+  }, [isPending, session, router]);
+
+  if (isPending || !session?.user) {
+    return <p className="text-center py-10">Loading...</p>;
+  }
+
       const handleDeleteEvent = (id: string) => {
-            setEvents((prevEvents) =>
-                prevEvents.filter((event) => event._id !== id)
-            );
-        };
-    
-        const handleUpdateEvent = (updatedEvent: IEvent) => {
-        setEvents((prevEvents) =>
-            prevEvents.map((event) =>
-                event._id === updatedEvent._id ? updatedEvent : event
-            )
-        );
-    };
+  setEvents((prevEvents) =>
+    prevEvents.filter((event) => event._id !== id)
+  );
+};
+
+const handleUpdateEvent = (updatedEvent: IEvent) => {
+  setEvents((prevEvents) =>
+    prevEvents.map((event) =>
+      event._id === updatedEvent._id ? updatedEvent : event
+    )
+  );
+};
     
        
     
