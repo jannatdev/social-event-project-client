@@ -48,7 +48,7 @@ if (!email) {
 
  
   const res = await fetch(
-    `https://social-event-project-server-qptb.vercel.app/events/joiningEvents/${encodeURIComponent(email)}`, {
+    `https://social-event-project-server.vercel.app/events/joiningEvents/${encodeURIComponent(email)}`, {
       method:"GET",
       headers: {
        Authorization: `Bearer ${token}`,

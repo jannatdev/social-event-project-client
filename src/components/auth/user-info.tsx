@@ -81,10 +81,10 @@ const UserInfo = () => {
       }
 
       toast.success( "Signed out is successful", );
-      router.push("/");
-      router.refresh();
-      refetch()
-  };
+     await refetch();
+    router.push("/");
+    router.refresh();
+      };
 
     return (
         <div>

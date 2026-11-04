@@ -31,7 +31,7 @@ export function Hero() {
       </div>
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black/25 to-transparent"
+        className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-linear-to-b from-black/25 to-transparent"
       />
 
     
@@ -52,22 +52,19 @@ export function Hero() {
         {/* Eyebrow pill */}
         <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-primary/25 px-4 py-1.5 text-sm font-semibold text-white backdrop-blur-sm">
           <Snowflake className="size-4" aria-hidden />
-          Winter 2025–26 Drive · Mirpur, Dhaka
+          Social Development Events
         </div>
 
         {/* Headline */}
         <h1 className="mt-6 font-heading text-5xl leading-[1.05] font-extrabold tracking-tight text-white sm:text-6xl lg:text-7xl">
-          Warm Cloths,
+          Small Actions,
           <br />
-          <span className="text-primary-foreground">Warmer Hearts</span>
+          <span className="text-primary-foreground">Greater Impact</span>
         </h1>
 
         {/* Sub copy */}
-        <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/80 sm:text-lg">
-          SheetSathi brings neighbours together across Mirpur to collect and
-          distribute winter clothes — sweaters, blankets, shawls and jackets —
-          to the families, rickshaw pullers and day labourers who need them
-          most before the cold sets in.
+        <p className="mt-6 max-w-2xl text-base leading-relaxed text-white sm:text-lg">
+          SheetSathi brings people and communities together across Bangladesh to create positive change through various social initiatives
         </p>
 
         {/* CTAs */}
@@ -89,7 +86,7 @@ export function Hero() {
             className="h-12 rounded-xl border-white/30 bg-white/10 px-7 text-base font-semibold text-white backdrop-blur-sm hover:border-white/50 hover:bg-white/20 hover:text-white"
           >
             <HandHeart aria-hidden />
-            Stay with us
+           Donate
           </Button>
         </div>
 

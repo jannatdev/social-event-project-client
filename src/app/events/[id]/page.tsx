@@ -24,7 +24,7 @@ const EventDetailsPage = ({ params }: Params) => {
 const EventDetailsContent = async({params}:Params) => {
   const {id} =await params
 
-  const res = await fetch (`https://social-event-project-server-qptb.vercel.app/events/${id}`,{
+  const res = await fetch (`https://social-event-project-server.vercel.app/${id}`,{
     cache:"no-store"
   })
 

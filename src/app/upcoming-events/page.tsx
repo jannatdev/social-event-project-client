@@ -27,7 +27,7 @@ export default  function UpcomingEventsPage() {
   useEffect(()=>{
     const fetchEvents=async()=>{
       try{
-         const res = await fetch ('https://social-event-project-server-qptb.vercel.app/events',{
+         const res = await fetch ('https://social-event-project-server.vercel.app/events',{
    cache:"no-store"
   })
   if(!res.ok){

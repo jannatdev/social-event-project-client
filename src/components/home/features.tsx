@@ -97,8 +97,9 @@ const Features = () => {
             </span>
 
             <h2 className="mt-5 font-heading text-3xl leading-tight font-extrabold tracking-tight text-foreground sm:text-4xl">
-              Everything You Need to{" "}
-              <span className="text-primary">Give Warmth</span>
+             Building a Better{" "}
+              <span className="text-primary">Community</span>{" "}
+              Together
             </h2>
 
             <p className="mt-4 max-w-md text-base leading-relaxed text-muted-foreground">

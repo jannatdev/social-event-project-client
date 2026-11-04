@@ -23,7 +23,7 @@ import { authClient } from "@/lib/auth-client";
 const publicLinks = [
   { href: "/", label: "Home" },
   { href: "/upcoming-events", label: "Upcoming Events" },
-  
+  { href: "/donate", label: "Donate" },
 ] as const;
 
 
@@ -176,15 +176,19 @@ export function Navbar() {
               </nav>
               <div className="mt-auto flex flex-col gap-2 p-4">
 
-                
+                {isLoggedIn ? (
+                    <UserInfo />
+                  ) : (
+                    <Button
+                      nativeButton={false}
+                      render={<Link href="/login" />}
+                      className="font-semibold shadow-sm shadow-primary/30"
+                    >
+                      Login
+                    </Button>
+                  )}
                
-                <SheetClose
-                  nativeButton={false}
-                  render={<Link href="/login" />}
-                  className="inline-flex h-9 items-center justify-center rounded-lg bg-primary px-2.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
-                >
-                  Login
-                </SheetClose>
+             
               </div>
              
             </SheetContent>
