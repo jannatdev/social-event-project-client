@@ -8,6 +8,9 @@ import { client, db } from "@/lib/mongodb";
 
 
 export const auth = betterAuth({
+
+
+
      emailAndPassword: { 
     enabled: true, 
   }, 
@@ -26,7 +29,12 @@ export const auth = betterAuth({
       maxAge: 14*24*60*60
     }
    },
-    baseURL: process.env.BETTER_AUTH_URL,
+
+   trustedOrigins: [
+    "baseURL: process.env.BETTER_AUTH_URL",
+    "https://social-event-project-client.vercel.app",
+  ],
+    
 
  database: mongodbAdapter(db, {
     client,
