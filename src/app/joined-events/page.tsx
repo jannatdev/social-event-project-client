@@ -53,6 +53,10 @@ if (!email) {
       headers: {
        Authorization: `Bearer ${token}`,
       },
+
+      console.log("Status:", res.status);
+       console.log("Response:", await res.clone().text());
+
       cache: "no-store",
     }
   );
@@ -63,10 +67,13 @@ if (!email) {
   
     throw new Error("Failed to fetch events");
   }
+       console.log("Status:", res.status);
+       console.log("Response:", await res.clone().text());
 
+     
   const events = await res.json();
 
-
+  console.log("Protected API data:",events);
   return (
     <JoinedEventClient iniitialEvents={Array.isArray(events) ? events : []} />
   );
