@@ -9,7 +9,7 @@ import { client, db } from "@/lib/mongodb";
 
 export const auth = betterAuth({
 
-
+ baseURL: process.env.BETTER_AUTH_URL,
 
      emailAndPassword: { 
     enabled: true, 
@@ -30,9 +30,9 @@ export const auth = betterAuth({
     }
    },
 
-   trustedOrigins: [
-    "baseURL: process.env.BETTER_AUTH_URL",
-    "https://social-event-project-client.vercel.app",
+    trustedOrigins: [
+    "http://localhost:3000",
+    "https://social-event-project-client-792l.vercel.app/",
   ],
     
 
