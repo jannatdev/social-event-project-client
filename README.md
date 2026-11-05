@@ -32,8 +32,5 @@ Users can discover upcoming events, view event details, join events, and manage 
 2. Event Management
 3. Explore Events
 4. Join Events
-<<<<<<< HEAD
 5. Responsive Design for all device
-=======
-5. Responsive Design for all device
->>>>>>> 395d5b67440846d8e4ba374ed85c761cd5fd6065
+
