@@ -27,8 +27,8 @@ const nunito = Nunito({
 
 export const metadata: Metadata = {
   title: {
-    default: "SheetSathi — Winter Warmth Drive, Mirpur Dhaka",
-    template: "%s | SheetSathi",
+    default: "CareHub",
+    template: "%s | CareHub",
   },
   description:
     "SheetSathi organizes community winter cloth distribution events across Mirpur, Dhaka. Join a drive, donate sweaters and blankets, or volunteer to keep neighbours warm.",
