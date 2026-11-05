@@ -2,6 +2,7 @@
 import EventCard, { IEvent } from '@/components/events/event-card';
 import { PagePlaceholder } from '@/components/layout/page-placeholder';
 import { useSession } from '@/lib/auth-client';
+import { Snowflake } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
 
@@ -50,6 +51,11 @@ const handleUpdateEvent = (updatedEvent: IEvent) => {
       
     return (
         <div className=" max-w-7xl mx-auto ">
+          <span className="inline-flex items-center gap-2 ml-140 mt-15 -mb-100 rounded-full border border-primary/25 bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary">
+                  <Snowflake className="size-4" aria-hidden />
+                  Joined Events
+       </span>
+
       <PagePlaceholder
             title="Joined Events"
            
@@ -60,6 +66,7 @@ const handleUpdateEvent = (updatedEvent: IEvent) => {
 
       ):(
         <div className="grid md:grid-cols-3 gap-6 mb-15">
+          
            {
         events.map((event:IEvent)=> <EventCard  key={event._id} event={event} onDelete={handleDeleteEvent} onUpdate={handleUpdateEvent}/>
           

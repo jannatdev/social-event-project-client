@@ -5,6 +5,7 @@ import { PagePlaceholder } from "@/components/layout/page-placeholder";
 import { authClient, useSession } from "@/lib/auth-client";
 import { useEffect, useState } from "react";
 import Loading from "../loading";
+import { Snowflake } from "lucide-react";
 
 
 
@@ -77,7 +78,11 @@ export default function ManageEventsPage() {
 
 
   return (
-    <div className=" max-w-7xl mx-auto -mt-15 ">
+    <div className=" max-w-7xl mx-auto  ">
+       <span className="inline-flex items-center gap-2 ml-135 mt-15 -mb-100 rounded-full border border-primary/25 bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary">
+                  <Snowflake className="size-4" aria-hidden />
+                  Manage Events
+       </span>
       <PagePlaceholder
       title="Manage Events"
       

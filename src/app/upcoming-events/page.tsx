@@ -132,14 +132,15 @@ export default  function UpcomingEventsPage() {
 
 
   return (
-    <div className="bg-green-50 dark:bg-background -mt-20">
+    <div className="bg-green-50 dark:bg-background  max-w-7xl mx-auto">
+       <span className="inline-flex items-center gap-2 ml-140 mt-15 -mb-100 rounded-full border border-primary/25 bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary">
+                  <Snowflake className="size-4" aria-hidden />
+                  All Events
+       </span>
 
-      <span className="inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary">
-              <Snowflake className="size-4" aria-hidden />
-              All Events
-            </span>
-
+    
       <div>
+        
          <PagePlaceholder
       title="Upcoming Events"
       

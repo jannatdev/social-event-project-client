@@ -99,8 +99,8 @@ export function SiteFooter() {
                 <Snowflake className="size-5" aria-hidden />
               </span>
               <span className="font-heading text-xl font-extrabold tracking-tight">
-                <span className="text-white">Sheet</span>
-                <span className="text-primary">Sathi</span>
+                <span className="text-white">Care</span>
+                <span className="text-primary">Hub</span>
               </span>
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/60">
@@ -217,10 +217,10 @@ export function SiteFooter() {
 
         {/* Bottom bar */}
         <div className="mt-10 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 text-xs text-white/40 sm:flex-row">
-          <p>© 2026 SheetSathi. All rights reserved.</p>
+          <p>© 2026 CareHub. All rights reserved.</p>
           <p className="inline-flex items-center gap-1.5">
             <Snowflake className="size-3.5 text-primary" aria-hidden />
-            Keeping Mirpur warm, one family at a time.
+            Keeping warm, one family at a time.
           </p>
         </div>
       </div>

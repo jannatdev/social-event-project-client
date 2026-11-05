@@ -104,8 +104,8 @@ export function Navbar() {
             <Snowflake className="size-5" aria-hidden />
           </span>
           <span className="font-heading text-xl font-extrabold tracking-tight">
-            <span className="text-foreground">Sheet</span>
-            <span className="text-primary">Sathi</span>
+            <span className="text-foreground">Care</span>
+            <span className="text-primary">Hub</span>
           </span>
         </Link>
 
@@ -147,8 +147,8 @@ export function Navbar() {
             <SheetContent className="w-72">
               <SheetHeader>
                 <SheetTitle className="font-heading text-lg font-extrabold">
-                  <span className="text-foreground">Sheet</span>
-                  <span className="text-primary">Sathi</span>
+                  <span className="text-foreground">Care</span>
+                  <span className="text-primary">Hub</span>
                 </SheetTitle>
                 <SheetDescription className="sr-only">
                   Site navigation

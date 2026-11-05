@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 
 const Newsletter = () => {
   return (
-    <section id="newsletter" className="py-16 w-full  bg-green-900">
+    <section id="newsletter" className="py-16 w-full  bg-green-700">
       <div className=" container mx-auto px-4">
         <div className="relative isolate overflow-hidden w-full -mb-15.5 px-6 py-14 shadow-xl shadow-green-600/25 sm:px-10 lg:px-16">
           {/* Falling snow — reuses the hero's snow layer for brand consistency */}
@@ -45,7 +45,7 @@ const Newsletter = () => {
               Never Miss a Winter Drive
             </h2>
             <p className="mt-3 max-w-xl text-sm leading-relaxed text-white/75 sm:text-base">
-              Drive dates, collection points and impact stories from Mirpur —
+              Drive dates, collection points and impact stories from Dhaka —
               one short email a week during the season, and nothing else.
             </p>
 

@@ -187,7 +187,7 @@ const EventJointCard = ({event}:{event:IEvent}) => {
               <UserRound className="text-green-600" />
               <div className="min-w-0">
                 <p className="text-sm text-gray-500 dark:text-gray-400">Organizer</p>
-                <p className="font-semibold truncate">{event.email}</p>
+                <p className="font-semibold truncate">CareHub</p>
               </div>
             </CardContent>
           </Card>

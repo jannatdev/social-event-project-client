@@ -15,7 +15,7 @@ const stats = [
   { icon: Users, value: "2,500+", label: "Families Warmed" },
   { icon: Shirt, value: "12,000+", label: "Items Distributed" },
   { icon: HandHeart, value: "40+", label: "Drives Held" },
-  { icon: MapPin, value: "18", label: "Mirpur Zones" },
+  { icon: MapPin, value: "18", label: "Dhaka Zones" },
 ] as const;
 
 export function Hero() {
@@ -64,7 +64,7 @@ export function Hero() {
 
         {/* Sub copy */}
         <p className="mt-6 max-w-2xl text-base leading-relaxed text-white sm:text-lg">
-          SheetSathi brings people and communities together across Bangladesh to create positive change through various social initiatives
+          CareHub brings people and communities together across Bangladesh to create positive change through various social initiatives
         </p>
 
         {/* CTAs */}

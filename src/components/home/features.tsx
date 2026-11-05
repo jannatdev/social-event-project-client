@@ -93,7 +93,7 @@ const Features = () => {
           <div className="lg:col-span-5 bg-green-600 px-6 py-10 rounded-2xl">
             <span className="inline-flex items-center gap-2 rounded-full border border-primary/25 bg-white px-4 py-1.5 text-sm font-semibold text-primary">
               <Snowflake className="size-4" aria-hidden />
-              Why SheetSathi
+              Why CareHub
             </span>
 
             <h2 className="mt-5 font-heading text-3xl text-white leading-tight font-extrabold tracking-tight  sm:text-4xl">
@@ -104,7 +104,7 @@ const Features = () => {
 
             <p className="mt-4 max-w-md text-base leading-relaxed text-white/80">
               From finding a drive near you to tracking where every sweater ends
-              up — SheetSathi keeps donors, volunteers and organisers on the
+              up — CareHub keeps donors, volunteers and organisers on the
               same page all winter long.
             </p>
 
