@@ -72,13 +72,14 @@ const UserInfo = () => {
     const handleLogOut = async () => {
 
       // better-auth's signOut() doesn't throw on failure — it returns { error }
-      const { error } = await signOut();
+      // const { error } = await signOut();
 
-      if (error) {
-        console.error("Logout Failed", error);
-        toast.error( "Failed to sign out");
-        return;
-      }
+      // if (error) {
+      //   console.error("Logout Failed", error);
+      //   toast.error( "Failed to sign out");
+      //   return;
+      // }
+      await authClient.signOut()
 
       toast.success( "Signed out is successful", );
      await refetch();
