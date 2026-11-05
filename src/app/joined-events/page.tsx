@@ -48,7 +48,7 @@ if (!email) {
 
  
   const res = await fetch(
-    `https://social-event-project-server.vercel.app/events/joiningEvents/${encodeURIComponent(email)}`, {
+    `https://social-event-project-server.vercel.app/events/joiningEvents/${email}`, {
       method:"GET",
       headers: {
        Authorization: `Bearer ${token}`,
@@ -60,11 +60,6 @@ if (!email) {
 
   if (!res.ok) {
 
-const errorData = await res.text();
-  console.log("API Error:", errorData);
-
-    
-  
     throw new Error(`Failed to fetch joined events (HTTP ${res.status})`);
   }
        
