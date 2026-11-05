@@ -40,7 +40,7 @@ export default function ManageEventsPage() {
 
     const token = data.token;
 
-   const res = await fetch(`https://social-event-project-server.vercel.app/${email}`,{
+   const res = await fetch(`https://social-event-project-server.vercel.app/events/creator/${encodeURIComponent(email)}`,{
     method:"GET",
      headers: {
           Authorization: `Bearer ${token}`,
@@ -50,6 +50,8 @@ export default function ManageEventsPage() {
   
 
      if (!res.ok){
+      const errorData = await res.text()
+      console.error("API Error:", res.status, errorData)
       throw new Error("Failed to fetch events")
      }
      const event = await res.json()

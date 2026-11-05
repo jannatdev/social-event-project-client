@@ -2,8 +2,7 @@
 import EventCard, { IEvent } from '@/components/events/event-card';
 import { PagePlaceholder } from '@/components/layout/page-placeholder';
 import { useSession } from '@/lib/auth-client';
-import { redirect } from 'next/navigation';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 
 import { useEffect, useState } from 'react';
@@ -17,12 +16,12 @@ interface IJoindClient{
 const JoinedEventClient = ({iniitialEvents =[]}:IJoindClient) => {
    const{data:session, isPending}=useSession()
    const router = useRouter();
- 
-      if (!session?.user) {
-    redirect("/login");
-  }
+
       const [ events,setEvents ] = useState<IEvent[]>(iniitialEvents)
        useEffect(() => {
+    // Only send the user to /login once the session lookup has finished —
+    // `session` is undefined on the very first render, so redirecting earlier
+    // would bounce logged-in users away before their session arrives.
     if (!isPending && !session?.user) {
       router.replace("/login");
     }

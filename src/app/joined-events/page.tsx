@@ -65,7 +65,7 @@ const errorData = await res.text();
 
     
   
-    throw new Error("Failed to fetch events");
+    throw new Error(`Failed to fetch joined events (HTTP ${res.status})`);
   }
        
      

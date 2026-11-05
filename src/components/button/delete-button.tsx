@@ -38,7 +38,7 @@ const DeleteButton = ({event,onDelete}:
      
      try{
         setDeleting(true)
-        const res = await fetch (`http://localhost:8000/events/${event._id}`,{
+        const res = await fetch (`https://social-event-project-server.vercel.app/events/${event._id}`,{
             method:"DELETE",
             headers:{
                 'Content-type':'application/json',
