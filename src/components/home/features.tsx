@@ -71,7 +71,7 @@ const Features = () => {
   return (
     <section
       id="features"
-      className="relative overflow-hidden bg-white py-16 dark:bg-card sm:py-20"
+      className="relative overflow-hidden bg-green-50 py-16 dark:bg-card sm:py-20"
     >
       {/* Soft green blooms + snowflake watermark for brand consistency */}
       <div
@@ -90,19 +90,19 @@ const Features = () => {
       <div className="container relative mx-auto px-4">
         <div className="grid items-start gap-10 lg:grid-cols-12 lg:gap-14">
           {/* Editorial column */}
-          <div className="lg:col-span-5">
-            <span className="inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary">
+          <div className="lg:col-span-5 bg-green-600 px-6 py-10 rounded-2xl">
+            <span className="inline-flex items-center gap-2 rounded-full border border-primary/25 bg-white px-4 py-1.5 text-sm font-semibold text-primary">
               <Snowflake className="size-4" aria-hidden />
               Why SheetSathi
             </span>
 
-            <h2 className="mt-5 font-heading text-3xl leading-tight font-extrabold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="mt-5 font-heading text-3xl text-white leading-tight font-extrabold tracking-tight  sm:text-4xl">
              Building a Better{" "}
               <span className="text-primary">Community</span>{" "}
               Together
             </h2>
 
-            <p className="mt-4 max-w-md text-base leading-relaxed text-muted-foreground">
+            <p className="mt-4 max-w-md text-base leading-relaxed text-white/80">
               From finding a drive near you to tracking where every sweater ends
               up — SheetSathi keeps donors, volunteers and organisers on the
               same page all winter long.
@@ -112,14 +112,14 @@ const Features = () => {
               size="lg"
               nativeButton={false}
               render={<Link href="/upcoming-events" />}
-              className="mt-8 h-12 rounded-xl px-7 text-base font-semibold shadow-lg shadow-primary/30"
+              className="mt-8 mr-2 h-12 rounded-xl px-7 text-base bg-white text-primary font-semibold shadow-lg shadow-primary/30"
             >
               Explore Drives
               <ArrowRight aria-hidden />
             </Button>
 
-            <p className="mt-5 inline-flex items-center gap-2 text-sm text-muted-foreground">
-              <MapPin className="size-4 text-primary" aria-hidden />
+            <p className="mt-5 inline-flex items-center gap-2 text-sm text-white/90">
+              <MapPin className="size-4 text-white" aria-hidden />
               Serving 18 zones across Bangladesh
             </p>
           </div>

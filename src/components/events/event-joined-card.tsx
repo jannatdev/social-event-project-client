@@ -78,7 +78,8 @@ const EventJointCard = ({event}:{event:IEvent}) => {
      try{
        setJoining (true);
 
-       const res= await fetch('https://social-event-project-server.vercel.app/events/join',{
+       const serverUrl = process.env.NEXT_PUBLIC_BETTER_AUTH_SERVER_URL;
+       const res= await fetch(`${serverUrl}/events/join`,{
         method:"POST",
         headers:{
           'Content-type':'application/json',

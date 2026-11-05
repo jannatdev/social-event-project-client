@@ -75,9 +75,9 @@ const galleryImages: GalleryImage[] = [
   },
   {
     src: "/images/gallary/images.jpg",
-    eventName: "Mirpur Winter Camp",
-    eventType: "Community Event",
-    eventDate: "2026-01-31",
+    eventName: "Food Donation Camp",
+    eventType: "Donation",
+    eventDate: "2026-02-12",
   },
   {
     src: "/images/gallary/IMG20200112101159.jpg",

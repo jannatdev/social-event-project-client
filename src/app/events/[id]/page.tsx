@@ -1,7 +1,10 @@
+import NotFound from "@/app/not-found";
 import EventJointCard from "@/components/events/event-joined-card";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { Suspense } from "react";
+
+
 
 interface Params{
   params:{
@@ -23,8 +26,8 @@ const EventDetailsPage = ({ params }: Params) => {
 };
 const EventDetailsContent = async({params}:Params) => {
   const {id} =await params
-
-  const res = await fetch (`https://social-event-project-server.vercel.app/events/${id}`,{
+  const serverUrl = process.env.BETTER_AUTH_SERVER_URL;
+  const res = await fetch (`${serverUrl}/events/${id}`,{
     cache:"no-store"
   })
 
@@ -39,6 +42,9 @@ const EventDetailsContent = async({params}:Params) => {
     );
   }
    const event = await res.json()
+   if(!event){
+    return NotFound();
+   }
 
   return (
      <main className="min-h-screen bg-green-50 px-4 py-8 my-10 dark:bg-background">

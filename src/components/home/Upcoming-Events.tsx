@@ -9,7 +9,13 @@ const UpcomingEvents = () => {
      useEffect(()=>{
         const upcomingEvents=async()=>{
             try{
-                const res = await fetch ('https://social-event-project-server.vercel.app/Upcoming-events',{
+              const  serverUrl = process.env.NEXT_PUBLIC_BETTER_AUTH_SERVER_URL
+
+                 if (!serverUrl) {
+        throw new Error("Backend URL is missing");
+      }
+
+                const res = await fetch (`${serverUrl}/Upcoming-events`,{
                     cache:"no-store",
                 })
 

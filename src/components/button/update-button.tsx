@@ -107,7 +107,7 @@ export function EditButton({event,onUpdate}:
 
         
  
-        const res =await fetch(`https://social-event-project-server.vercel.app/events/${event._id}`,{
+        const res =await fetch(`${process.env.NEXT_PUBLIC_BETTER_AUTH_SERVER_URL}/events/${event._id}`,{
           
          method:"PATCH",
          headers:{

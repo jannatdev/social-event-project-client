@@ -4,6 +4,7 @@ import EventCard, { IEvent } from "@/components/events/event-card";
 import { PagePlaceholder } from "@/components/layout/page-placeholder";
 import { authClient, useSession } from "@/lib/auth-client";
 import { useEffect, useState } from "react";
+import Loading from "../loading";
 
 
 
@@ -39,8 +40,11 @@ export default function ManageEventsPage() {
     }
 
     const token = data.token;
-
-   const res = await fetch(`https://social-event-project-server.vercel.app/events/creator/${email}`,{
+     const serverUrl = process.env.NEXT_PUBLIC_BETTER_AUTH_SERVER_URL;
+     if (!serverUrl) {
+       throw new Error("Server URL is missing");
+     }
+   const res = await fetch(`${serverUrl}/events/creator/${email}`,{
     method:"GET",
      headers: {
           Authorization: `Bearer ${token}`,
@@ -67,9 +71,9 @@ export default function ManageEventsPage() {
 
  },[email])
 
-  if (loading) {
-    return <p className="text-center py-10">Loading events...</p>;
-  }
+ if (loading) {
+     return <Loading/>;
+   }
 
 
   return (

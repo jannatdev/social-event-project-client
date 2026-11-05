@@ -46,9 +46,8 @@ if (!email) {
 
 
 
- 
-  const res = await fetch(
-    `https://social-event-project-server.vercel.app/events/joiningEvents/${email}`, {
+ const serverUrl = process.env.BETTER_AUTH_SERVER_URL;
+  const res = await fetch(`${serverUrl}/events/joiningEvents/${email}`, {
       method:"GET",
       headers: {
        Authorization: `Bearer ${token}`,
